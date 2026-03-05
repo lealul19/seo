@@ -1,25 +1,54 @@
 <script>
     import background from '$lib/assets/background.jpg';
+    export let data;
 </script>
 
 <svelte:head>
     <title>Lea's Webshop - Electronics for all!</title>
-    <meta name= "description" content="We sell used electronics for a super cheap price!">
-    <meta property="og:title" content="Gesart's Webshop - Electronics for all" />
-    <meta property="og:image" content="{background}" />
+    <meta name="description" content="We sell used electronics for a super cheap price!">
 </svelte:head>
- 
-<header class="h-[500px] bg-center bg-cover flex items-center justify-center"
-    style="background-image: url({background})">
-       <h1 class="text-5xl font-bold text-white">Electronic Devices</h1>
-    </header>
-    <main class="min-h-[300px]"> 
- 
+
+<header
+    class="h-[500px] bg-center bg-cover flex items-center justify-center"
+    style="background-image: url({background})"
+>
+    <h1 class="text-5xl font-bold text-white">Electronic Devices</h1>
+</header>
+
+<main class="min-h-[300px] p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+{#each data.products as product}
+
+    <div class="border p-5 rounded-lg shadow bg-white hover:shadow-lg transition">
+
+        <!-- IMAGE -->
+        <div class="w-full aspect-[16/9] overflow-hidden rounded mb-4 bg-gray-100">
+            <img
+                src={product.image_url}
+                alt={product.name}
+                class="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+            />
+        </div>
+
+        <!-- TEXT -->
+        <h2 class="text-xl font-bold">{product.name}</h2>
+
+        <p class="text-gray-600 mb-2">
+            {product.description}
+        </p>
+
+        <p class="text-lg font-semibold text-blue-600">
+            ${product.price}
+        </p>
+
+    </div>
+
+{/each}
+
 </main>
- 
+
 <footer class="h-[300px] bg-blue-950 text-white flex items-center justify-center">
     <p>Test-Page for SEO</p>
 </footer>
-
-
-
