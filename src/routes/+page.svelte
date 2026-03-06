@@ -39,7 +39,7 @@
             {product.description}
         </p>
 
-        <p class="text-lg font-semibold text-blue-600">
+        <p class="text-lg font-semibold text-blue-500">
             ${product.price}
         </p>
 
