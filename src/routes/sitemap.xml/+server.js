@@ -1,11 +1,10 @@
-import { createConnection } from '$lib/server/db';
+import { db } from "$lib/server/db";
+
  
 export async function GET() {
 	const baseUrl = 'https://example.com';
  
-	const connection = await createConnection();
- 
-	const [products] = await connection.query(`
+	const [products] = await db.query(`
 		SELECT slug
 		FROM products
 		WHERE slug IS NOT NULL
